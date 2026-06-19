@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+
+# Dataset
+dataset/
+dataset.zip
+
+# Model Files
+*.pth
+*.pt
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
