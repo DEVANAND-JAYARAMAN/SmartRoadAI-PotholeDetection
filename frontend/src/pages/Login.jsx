@@ -20,7 +20,7 @@ export default function Login() {
       <div className="login-card">
         <div className="login-logo">🛣️</div>
         <h1>SmartRoadAI</h1>
-        <p className="login-sub">Pothole Detection System</p>
+        <p className="login-sub">SmartRoadAI - Pothole Detection System</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

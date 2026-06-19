@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/dashboard" className="nav-logo">
-        🛣️ <span>SmartRoadAI</span>
+        🛣️ <span>SmartRoadAI-PotholeDetection</span>
       </Link>
       <div className="nav-links">
         <Link to="/dashboard" className={pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link>
