@@ -1,14 +1,19 @@
 from fastapi import FastAPI, UploadFile, File
-
+from fastapi.middleware.cors import CORSMiddleware
 import torch
 import torch.nn as nn
-
-from torchvision import models
-from torchvision import transforms
-
+from torchvision import models, transforms
 from PIL import Image
+import os
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 device = torch.device(
     "cuda" if torch.cuda.is_available()
@@ -23,11 +28,10 @@ model.fc = nn.Linear(
     2
 )
 
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "pothole_model_v2.pth")
+
 model.load_state_dict(
-    torch.load(
-        "pothole_model.pth",
-        map_location=device
-    )
+    torch.load(MODEL_PATH, map_location=device)
 )
 
 model = model.to(device)

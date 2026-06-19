@@ -1,0 +1,71 @@
+.prediction-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.pred-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pred-header h3 { font-size: 1.1rem; }
+
+.badge {
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge.danger { background: rgba(239,68,68,0.15); color: #ef4444; }
+.badge.warning { background: rgba(249,115,22,0.15); color: #f97316; }
+.badge.safe { background: rgba(34,197,94,0.15); color: #22c55e; }
+
+.pred-body { margin-bottom: 1rem; }
+
+.pred-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pred-label { color: var(--text-muted); font-size: 0.9rem; }
+.pred-value { font-weight: 600; }
+
+.confidence-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+.recommendations h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.recommendations ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.recommendations li { font-size: 0.85rem; color: #cbd5e1; }

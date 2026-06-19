@@ -1,0 +1,24 @@
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background: #111827;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer strong { color: var(--primary); }
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.footer-icons a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.footer-icons a:hover { color: var(--primary); }
