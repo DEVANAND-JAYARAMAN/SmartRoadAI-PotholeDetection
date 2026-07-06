@@ -11,6 +11,7 @@ venv/
 # Dataset
 dataset/
 dataset.zip
+SmartRoadAI_Dataset.zip
 
 # Model Files
 *.pth
