@@ -1,0 +1,49 @@
+name: Deploy Backend to Hugging Face Spaces
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Setup Git
+        run: |
+          git config --global user.email "ci@smartroadai.com"
+          git config --global user.name "SmartRoadAI CI"
+
+      - name: Install HF Hub CLI
+        run: pip install huggingface_hub
+
+      - name: Push backend to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ secrets.HF_SPACE }}
+        run: |
+          python - <<'EOF'
+          import os
+          from huggingface_hub import HfApi
+
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          space = os.environ["HF_SPACE"]  # format: username/space-name
+
+          api.upload_folder(
+              folder_path="backend",
+              repo_id=space,
+              repo_type="space",
+              commit_message="ci: auto-deploy from GitHub Actions",
+              ignore_patterns=["__pycache__", "*.pyc", ".env"],
+          )
+          print(f"✅ Deployed to https://huggingface.co/spaces/{space}")
+          EOF
